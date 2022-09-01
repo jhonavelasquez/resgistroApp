@@ -11,7 +11,8 @@ export class HomePage {
 
   usuario: string;
   clave: string;
-
+  hide = true;
+  
   constructor(private toast:ToastController,
     private router: Router) {}
 
@@ -27,8 +28,9 @@ export class HomePage {
     if(this.usuario == "alumno" && this.clave == "12345678"){
       this.router.navigate(['/inicio-alumno'], nav)
     }
-    if(this.usuario == "profesor" && this.clave == "12345678"){
+    else if(this.usuario == "profesor" && this.clave == "12345678"){
       this.router.navigate(['/inicio-profesor'], nav)
+      
     }else{
       this.mostrarAlerta("Error, usuario o contraseña incorrecto(s)", 4000)
     

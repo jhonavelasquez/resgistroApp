@@ -8,13 +8,19 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label position="floating" >usuario</ion-label>
+    <ion-label position="floating">usuario</ion-label>
     <ion-input [(ngModel)]="usuario"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="clave"></ion-input>
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" expand="full" position="floating" [(ngModel)]="clave">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
   </ion-item>
 
   <ion-button expand="full" (click)="limpiar()">Limpiar</ion-button>
@@ -23,3 +29,4 @@
 
 
 </ion-content>
+

@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>inicioAlumno</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<p>Bienvenido: {{usuario}}</p>
+  <div id="titulo">
+    <h2>Bienvenido: {{usuario}}</h2>
+  </div>
+
+  <ion-button (click)="camara()" id="botonEscaner">Escanear QR</ion-button>
+  <div class="contenido">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Historial asistencias
+        </mat-panel-title>
+        </mat-expansion-panel-header >
+        <div id="asignatura">
+          <div>Base de Datos</div>
+          <div>80%</div>
+        </div>
+        <mat-progress-bar mode="determinate" value="80" ></mat-progress-bar>
+        
+        <div id="asignatura">
+          <div>Ingenieria de software</div>
+          <div>20%</div>
+        </div>
+        <mat-progress-bar mode="determinate" value="20" color="warn"></mat-progress-bar>
+        
+        <div id="asignatura">
+          <div>Etica para el trabajo</div>
+          <div>100%</div>
+        </div>
+        <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+       
+        </mat-expansion-panel>
+        
+
+
+  </div>
 </ion-content>
