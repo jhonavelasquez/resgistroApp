@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio-alumno',
@@ -14,7 +14,8 @@ export class InicioAlumnoPage implements OnInit {
 
   constructor(
     private active: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private alertController : AlertController) {
 
     this.active.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -22,10 +23,21 @@ export class InicioAlumnoPage implements OnInit {
       }
     });
   }
+  
+    async alertaQr() {
+    const alert = await this.alertController.create({
+      header: 'Escaner codigo QR',
+      message: `<img src="https://img.freepik.com/vector-premium/escaneo-codigos-qr-escaneame-leer-codigo-barras-movilidad-aplicacion-generacion-codificacion-reconocimiento-iconos-o-lectura-codigo-qr-estilo-plano_399089-1628.jpg?w=2000" alt="g-maps" style="border-radius: 2px">`,
+      cssClass: 'custom-alert',
+      buttons: ['Cancelar'],
+    });
 
-
+    await alert.present();
+  }
+  
   ngOnInit() {
   }
 
+  
 
 }
