@@ -9,6 +9,7 @@ import { InicioAlumnoPageRoutingModule } from './inicio-alumno-routing.module';
 import { InicioAlumnoPage } from './inicio-alumno.page';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CommonModule,
     FormsModule,
     IonicModule,
-    InicioAlumnoPageRoutingModule
+    InicioAlumnoPageRoutingModule,
+    MatToolbarModule
   ],
   declarations: [InicioAlumnoPage]
 })

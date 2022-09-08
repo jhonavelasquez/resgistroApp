@@ -2,6 +2,8 @@
 
 ion-content{
     --background:#012C56;
+    display: flex;
+    
 }
 
 .container{
@@ -17,4 +19,17 @@ h1{
     font-family: 'Righteous', cursive;
     color: white;  
     opacity: 0;
+}
+
+p{
+    font-size: 10px;   
+    color: white; 
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30%;
 }
