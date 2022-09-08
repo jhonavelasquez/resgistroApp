@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+ion-content{
+    --background:#012C56;
+}
+
+.container{
+    
+    img{
+        height: 150px;
+        margin-top: 70%;
+    }
+}
+
+h1{
+    font-size: 25px;
+    font-family: 'Righteous', cursive;
+    color: white;  
+    opacity: 0;
+}

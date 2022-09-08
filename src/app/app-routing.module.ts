@@ -7,16 +7,16 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },  {
     path: 'inicio-profesor',
     loadChildren: () => import('./inicio-profesor/inicio-profesor.module').then( m => m.InicioProfesorPageModule)
   },
   {
     path: 'inicio-alumno',
     loadChildren: () => import('./inicio-alumno/inicio-alumno.module').then( m => m.InicioAlumnoPageModule)
+  },
+  {
+    path: 'animacion',
+    loadChildren: () => import('./animacion/animacion.module').then( m => m.AnimacionPageModule)
   },
 
 ];

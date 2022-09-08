@@ -1,19 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Registro App
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
+  <div id="menu">
+    <h1>Duoc UC</h1>
+    </div>
+
   <ion-item>
     <ion-label position="floating">usuario</ion-label>
     <ion-input [(ngModel)]="usuario"></ion-input>
   </ion-item>
 
   <ion-item>
+    
     <mat-form-field>
+      
       <mat-label>Contraseña</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" expand="full" position="floating" [(ngModel)]="clave">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -23,9 +22,9 @@
     </mat-form-field>
   </ion-item>
 
-  <ion-button expand="full" (click)="limpiar()">Limpiar</ion-button>
-  <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
-
+  <ion-button id="botones" color="warn" expand="full" (click)="limpiar()" >Limpiar</ion-button>
+  <ion-button id="botones" color="warn" expand="full" (click)="ingresar()">Ingresar</ion-button>
+  
 
 
 </ion-content>
