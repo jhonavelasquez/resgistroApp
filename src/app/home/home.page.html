@@ -15,16 +15,12 @@
   </ion-item>
 
   <ion-item>
-    
-    <mat-form-field>
-      
-      <mat-label>Contraseña</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" expand="full" position="floating" [(ngModel)]="clave">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
+    <ion-label position="floating">contraseña</ion-label>
+    <div id="inputContraseña">
+    <ion-input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="clave"></ion-input>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+    [attr.aria-pressed]="hide"> <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> </button>
+    </div>
   </ion-item>
 
   <ion-button id="botones" color="warn" expand="full" (click)="limpiar()" >Limpiar</ion-button>
