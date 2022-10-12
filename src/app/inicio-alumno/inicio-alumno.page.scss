@@ -12,6 +12,10 @@
     border-radius: 10px;
 }
 
+ion-content{
+  --background: rgb(218, 218, 218);
+}
+
 #titulo > h2{
     display: flex;
     justify-content: center;
@@ -40,3 +44,8 @@ ion-toolbar{
   --background: #012C56;
   }
 
+  #justificativo{
+    margin-top: 10px;
+  }
+
+ 

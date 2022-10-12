@@ -14,7 +14,7 @@ export class AnimacionPage implements OnInit {
   ) {
     setTimeout(()=>{
       this.router.navigateByUrl('home');
-    }, 3000)
+    }, 1)
   }
 
   ngOnInit(): void {

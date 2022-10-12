@@ -32,9 +32,22 @@ export class InicioAlumnoPage implements OnInit {
       buttons: ['Cancelar'],
     });
 
+
     await alert.present();
   }
   
+  async alerta() {
+    const alert = await this.alertController.create({
+      header: 'Escaner codigo QR',
+      message: `<button>Mis Archivos</button>`,
+      cssClass: 'custom-alert',
+      buttons: ['Cancelar'],
+    });
+
+
+    await alert.present();
+  }
+
   ngOnInit() {
   }
 

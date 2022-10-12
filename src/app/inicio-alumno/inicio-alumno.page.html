@@ -14,33 +14,51 @@
 
   <ion-button (click)="alertaQr()" id="botonEscaner" color="as">Escanear QR</ion-button>
   <div class="contenido">
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="asistencia">
       <mat-expansion-panel-header id="expansion">
         <mat-panel-title>
           Historial asistencias
         </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div id="asignatura">
-          <div>Base de Datos</div>
-          <div>80%</div>
-        </div>
-        <mat-progress-bar mode="determinate" value="80" ></mat-progress-bar>
-        
-        <div id="asignatura">
-          <div>Ingenieria de software</div>
-          <div>20%</div>
-        </div>
-        <mat-progress-bar mode="determinate" value="20" color="warn"></mat-progress-bar>
-        
-        <div id="asignatura">
-          <div>Etica para el trabajo</div>
-          <div>100%</div>
-        </div>
-        <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
-       
-        </mat-expansion-panel>
-        
+      </mat-expansion-panel-header>
+      <div id="asignatura">
+        <div>Base de Datos</div>
+        <div>80%</div>
+      </div>
+      <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
 
+      <div id="asignatura">
+        <div>Ingenieria de software</div>
+        <div>20%</div>
+      </div>
+      <mat-progress-bar mode="determinate" value="20" color="warn"></mat-progress-bar>
+
+      <div id="asignatura">
+        <div>Etica para el trabajo</div>
+        <div>100%</div>
+      </div>
+      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="justificativo">
+      
+      
+      <mat-expansion-panel-header id="expansion">
+        <mat-panel-title>
+          Justificativo
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <input id="archivo" type="file"/>
+
+    </mat-expansion-panel>
+   
 
   </div>
+  
 </ion-content>
+
+<ion-footer style="background-color:rgb(218, 218, 218);">
+  <div style="width: 200px; margin-left: 15%;">
+    <img  src="assets/Logo_DuocUC.svg.png" alt="">
+  </div>
+</ion-footer>

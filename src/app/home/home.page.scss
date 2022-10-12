@@ -15,6 +15,14 @@
     -moz-appearance: textfield;
   }
 
+  ion-content{
+    --background: rgb(218, 218, 218);
+  }
+
+  ion-item{
+    --background: rgb(218, 218, 218);
+  }
+
   #menu{
     padding-top: 30px;
     height: 55px;
