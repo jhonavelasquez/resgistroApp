@@ -1,7 +1,8 @@
 {
   "name": "registroApp",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

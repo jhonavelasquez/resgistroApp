@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Camera, CameraResultType } from '@capacitor/camera';
+
 
 @Component({
   selector: 'app-inicio-alumno',
@@ -11,11 +13,12 @@ export class InicioAlumnoPage implements OnInit {
 
   usuario: string;
   panelOpenState = false;
+  imagen: string;
 
   constructor(
     private active: ActivatedRoute,
     private router: Router,
-    private alertController : AlertController) {
+    private alertController: AlertController) {
 
     this.active.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -23,29 +26,18 @@ export class InicioAlumnoPage implements OnInit {
       }
     });
   }
-  
-    async alertaQr() {
-    const alert = await this.alertController.create({
-      header: 'Escaner codigo QR',
-      message: `<img src="https://img.freepik.com/vector-premium/escaneo-codigos-qr-escaneame-leer-codigo-barras-movilidad-aplicacion-generacion-codificacion-reconocimiento-iconos-o-lectura-codigo-qr-estilo-plano_399089-1628.jpg?w=2000" alt="g-maps" style="border-radius: 2px">`,
-      cssClass: 'custom-alert',
-      buttons: ['Cancelar'],
+
+
+  async tomarFoto() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri
     });
 
+    var imageUrl = image.webPath;
+    this.imagen = imageUrl;
 
-    await alert.present();
-  }
-  
-  async alerta() {
-    const alert = await this.alertController.create({
-      header: 'Escaner codigo QR',
-      message: `<button>Mis Archivos</button>`,
-      cssClass: 'custom-alert',
-      buttons: ['Cancelar'],
-    });
-
-
-    await alert.present();
   }
 
   ngOnInit() {

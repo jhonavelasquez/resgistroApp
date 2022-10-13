@@ -11,8 +11,8 @@
   <div id="titulo">
     <h2>Bienvenido: {{usuario}}</h2>
   </div>
-
-  <ion-button (click)="alertaQr()" id="botonEscaner" color="as">Escanear QR</ion-button>
+  <img src="{{imagen}}" alt="">
+  <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button>
   <div class="contenido">
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="asistencia">
       <mat-expansion-panel-header id="expansion">
