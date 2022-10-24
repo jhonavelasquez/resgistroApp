@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 
 @Component({
@@ -27,7 +28,36 @@ export class InicioAlumnoPage implements OnInit {
     });
   }
 
+  //QR
+  async leerQr(){
+    document.querySelector('body').classList.add('scanner-active');
+    await BarcodeScanner.checkPermission({ force: true });
+  BarcodeScanner.hideBackground();
 
+  const result = await BarcodeScanner.startScan(); 
+  if (result.hasContent) {
+    console.log(result.content); 
+  }
+  }
+
+  async presentAlert(mensaje:string) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Important message',
+      message: 'This is an alert!',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async detener(){
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
+      document.querySelector('body').classList.remove('scanner-active');
+    };
+
+    //camara
   async tomarFoto() {
     const image = await Camera.getPhoto({
       quality: 90,

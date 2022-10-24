@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, NavigationExtras, Router, RouterStateSnapshot } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomePage {
   constructor(
     private toast: ToastController,
     private router: Router,
-    private sqlite: SQLite
+    private sqlite: SQLite,
   ) {
     this.sqlite.create({
       name: 'data.db',
@@ -39,26 +40,11 @@ export class HomePage {
     
   
   }
+  
 
   limpiar() {
     this.usuario = "";
     this.clave = "";
-  }
-
-  ingresar() {
-    let nav: NavigationExtras = {
-      state: { usuario: this.usuario }
-    }
-    if (this.usuario == "alumno" && this.clave == "12345678") {
-      this.router.navigate(['/inicio-alumno'], nav)
-    }
-    else if (this.usuario == "profesor" && this.clave == "12345678") {
-      this.router.navigate(['/inicio-profesor'], nav)
-
-    } else {
-      this.mostrarAlerta("Error, usuario o contraseña incorrecto(s)", 4000)
-
-    }
   }
 
   async mostrarAlerta(mensaje: string, duracion: number) {
@@ -94,6 +80,7 @@ export class HomePage {
       for (let i = 0; i < data.rows.length; i++) {
         let item = data.rows.item(i).nombre;
         console.log("funco")
+        localStorage.setItem("logueado","true")
         this.router.navigate(['/inicio-alumno'], nav)
       }
     })
