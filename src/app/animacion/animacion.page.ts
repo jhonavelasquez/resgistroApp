@@ -20,7 +20,7 @@ export class AnimacionPage implements OnInit {
   ngOnInit(): void {
     this.anim.create()
       .addElement(document.querySelector("img"))
-      .duration(1000)
+      .duration(4000)
       .delay(500)
       .keyframes([
         { offset: 0, transform: "scale(1) rotate3d(-1, 1, 0, 0deg)"},

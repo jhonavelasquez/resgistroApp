@@ -7,57 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.--background]="scanActive ? '#00000000' : '#fff'">
   <div id="titulo">
     <h2>Bienvenido: {{usuario}}</h2>
   </div>
   <img src="{{imagen}}" alt="">
   
-  <ion-button (click)="leerQR()">Leer QR</ion-button>
-  <ion-button (click)="detener()">Detener</ion-button>
+  <ion-button expand="full" (click)="leerQR()" [hidden]="scanActive"> <ion-icon name="scan" slot="start"></ion-icon> Leer QR</ion-button>
+  <p class="ion-text-center" *ngIf="result && !scanActive">{{ result }}</p>
 
-  <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button>
-  <div class="contenido">
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="asistencia">
-      <mat-expansion-panel-header id="expansion">
-        <mat-panel-title>
-          Historial asistencias
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div id="asignatura">
-        <div>Base de Datos</div>
-        <div>80%</div>
-      </div>
-      <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+  <ion-row class="scanner-buttons" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="detener()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
 
-      <div id="asignatura">
-        <div>Ingenieria de software</div>
-        <div>20%</div>
-      </div>
-      <mat-progress-bar mode="determinate" value="20" color="warn"></mat-progress-bar>
+  <!-- <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button> -->
+  
+  <ion-item *ngFor="let r of asistencias">
+    <ion-label>{{r.asignatura}}</ion-label>
+    <ion-label slot="end">{{r.fecha}}</ion-label>
+  </ion-item>
 
-      <div id="asignatura">
-        <div>Etica para el trabajo</div>
-        <div>100%</div>
-      </div>
-      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
-
-    </mat-expansion-panel>
-    
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="justificativo">
-      
-      
-      <mat-expansion-panel-header id="expansion">
-        <mat-panel-title>
-          Justificativo
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-        <input id="archivo" type="file"/>
-
-    </mat-expansion-panel>
-   
-
-  </div>
+  
   
 </ion-content>
 
