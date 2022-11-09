@@ -71,60 +71,60 @@ export class InicioAlumnoPage implements OnInit, AfterViewInit, OnDestroy {
   }
   
   //Scanner QR
-  async leerQR (){
-    const allowed = await this.checkPermission();
-    if (allowed) {
-      this.scanActive = true;
-      const result = await BarcodeScanner.startScan();
-      console.log("a",result)
-      this.result = result.content;
-      this.scanActive = false;
-      if (result.hasContent){
-        this.result = result.content;
-        const fechaDate = new Date()
-        const fechaString = fechaDate.toISOString().substring(0, 10);
-        this.db.executeSql('INSERT INTO asistencia VALUES(?,?)', [this.result, fechaString]).then(() => {
-          console.log("Asistencia agregada!")
-        }).catch(e => console.log(e));  
-        this.scanActive = false; 
-      } 
-    }
+  // async leerQR (){
+  //   const allowed = await this.checkPermission();
+  //   if (allowed) {
+  //     this.scanActive = true;
+  //     const result = await BarcodeScanner.startScan();
+  //     console.log("a",result)
+  //     this.result = result.content;
+  //     this.scanActive = false;
+  //     if (result.hasContent){
+  //       this.result = result.content;
+  //       const fechaDate = new Date()
+  //       const fechaString = fechaDate.toISOString().substring(0, 10);
+  //       this.db.executeSql('INSERT INTO asistencia VALUES(?,?)', [this.result, fechaString]).then(() => {
+  //         console.log("Asistencia agregada!")
+  //       }).catch(e => console.log(e));  
+  //       this.scanActive = false; 
+  //     } 
+  //   }
     
-  }
+  // }
 
-  async checkPermission(){
-    return new Promise(async (resolve, reject) => {
-      const status = await BarcodeScanner.checkPermission({ force: true});
-      if (status.granted){
-        resolve(true);
-      } else if (status.denied){
-        const alert = await this.alertController.create({
-          header: 'no permission',
-          message: 'Please allow camera acces in your settings',
-          buttons: [{
-            text: 'No',
-            role: 'cancel'
-          },
-          {
-            text: 'Open settings',
-            handler: () => {
-                BarcodeScanner.openAppSettings();
-                resolve(false);
-            }
-          }] 
-        });
-        await alert.present();
-      } else {
-        resolve(false)
-      }
+  // async checkPermission(){
+  //   return new Promise(async (resolve, reject) => {
+  //     const status = await BarcodeScanner.checkPermission({ force: true});
+  //     if (status.granted){
+  //       resolve(true);
+  //     } else if (status.denied){
+  //       const alert = await this.alertController.create({
+  //         header: 'no permission',
+  //         message: 'Please allow camera acces in your settings',
+  //         buttons: [{
+  //           text: 'No',
+  //           role: 'cancel'
+  //         },
+  //         {
+  //           text: 'Open settings',
+  //           handler: () => {
+  //               BarcodeScanner.openAppSettings();
+  //               resolve(false);
+  //           }
+  //         }] 
+  //       });
+  //       await alert.present();
+  //     } else {
+  //       resolve(false)
+  //     }
     
-    });
-  }
+  //   });
+  // }
 
-  detener(){
-    BarcodeScanner.stopScan();
-    this.scanActive = false;
-  }
+  // detener(){
+  //   BarcodeScanner.stopScan();
+  //   this.scanActive = false;
+  // }
 
   //alertas
   async presentAlert(mensaje: string) {

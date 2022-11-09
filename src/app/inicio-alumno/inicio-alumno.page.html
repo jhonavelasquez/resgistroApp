@@ -13,7 +13,7 @@
   </div>
   <img src="{{imagen}}" alt="">
   
-  <ion-button expand="full" (click)="leerQR()" [hidden]="scanActive"> <ion-icon name="scan" slot="start"></ion-icon> Leer QR</ion-button>
+  <!-- <ion-button expand="full" (click)="leerQR()" [hidden]="scanActive"> <ion-icon name="scan" slot="start"></ion-icon> Leer QR</ion-button>
   <p class="ion-text-center" *ngIf="result && !scanActive">{{ result }}</p>
 
   <ion-row class="scanner-buttons" [hidden]="!scanActive">
@@ -22,14 +22,40 @@
     </ion-col>
   </ion-row>
 
-  <!-- <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button> -->
+  <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button> -->
   
-  <ion-item *ngFor="let r of asistencias">
+  <!-- <ion-item *ngFor="let r of asistencias">
     <ion-label>{{r.asignatura}}</ion-label>
     <ion-label slot="end">{{r.fecha}}</ion-label>
-  </ion-item>
+  </ion-item> -->
 
-  
+  <div class="contenido">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="asistencia">
+      <mat-expansion-panel-header id="expansion">
+        <mat-panel-title>
+          Historial asistencias
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ion-item *ngFor="let r of asistencias">
+        <ion-label>{{r.asignatura}}</ion-label>
+        <ion-label slot="end">{{r.fecha}}</ion-label>
+      </ion-item>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" id="justificativo">
+      
+      
+      <mat-expansion-panel-header id="expansion">
+        <mat-panel-title>
+          Justificativo
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <input id="archivo" type="file"/>
+
+    </mat-expansion-panel>
+   
+
+  </div>
   
 </ion-content>
 

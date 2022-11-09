@@ -19,7 +19,11 @@ const routes: Routes = [
   {
     path: 'animacion',
     loadChildren: () => import('./animacion/animacion.module').then( m => m.AnimacionPageModule)
+  },  {
+    path: 'scanner',
+    loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule)
   },
+
 
 ];
 
