@@ -148,6 +148,10 @@ export class InicioAlumnoPage implements OnInit, AfterViewInit, OnDestroy {
     await alert.present();
   }
 
+  pageEscaner(){
+    this.router.navigateByUrl('scanner');
+  }
+
   // async detener() {
   //   BarcodeScanner.showBackground();
   //   BarcodeScanner.stopScan();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AlertController } from '@ionic/angular';
 import { SQLite , SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-scanner',
@@ -12,10 +13,35 @@ export class ScannerPage implements OnInit {
  
   result = null;
   scanActive = false;
+  usuario: string;
   private db: SQLiteObject;
   constructor(
+    private active: ActivatedRoute,
+    private router: Router,
     private alertController: AlertController,
-    private sqlite: SQLite) { }
+    private sqlite: SQLite) {
+      this.sqlite.create({
+        name: 'data2.db',
+        location: 'default'
+      })
+      this.active.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+        }
+      
+      this.sqlite.create({
+          name: 'data2.db',
+          location: 'default'
+        })
+          .then((db: SQLiteObject) => {
+            this.db = db;
+            db.executeSql('create table asistencia(asignatura VARCHAR(32), fecha VARCHAR(90))', [])
+
+        
+          })
+          .catch(e => console.log(e));
+      });
+     }
 
   ngOnInit() {
   }
@@ -74,5 +100,7 @@ export class ScannerPage implements OnInit {
     BarcodeScanner.stopScan();
     this.scanActive = false;
   }
+
+  
 
 }

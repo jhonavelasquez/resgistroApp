@@ -14,13 +14,13 @@ export class AnimacionPage implements OnInit {
   ) {
     setTimeout(()=>{
       this.router.navigateByUrl('home');
-    }, 7)
+    }, 4000)
   }
 
   ngOnInit(): void {
     this.anim.create()
       .addElement(document.querySelector("img"))
-      .duration(4000)
+      .duration(1500)
       .delay(500)
       .keyframes([
         { offset: 0, transform: "scale(1) rotate3d(-1, 1, 0, 0deg)"},

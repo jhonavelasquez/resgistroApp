@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [style.--background]="scanActive ? '#00000000' : '#fff'">
   
   <ion-button expand="full" (click)="leerQR()" [hidden]="scanActive"> <ion-icon name="scan" slot="start"></ion-icon> Leer QR</ion-button>
   <p class="ion-text-center" *ngIf="result && !scanActive">{{ result }}</p>
@@ -19,5 +19,5 @@
   </ion-row>
 
   <ion-button (click)="tomarFoto()" id="botonEscaner" color="as">Escanear QR</ion-button>
-  
+  <div class="scan-box"></div>
 </ion-content>
